@@ -82,6 +82,13 @@ $result = mysqli_query($conn,$query);
 
                   while($row1 = mysqli_fetch_assoc($result)                  )
                   {
+                      
+                    $flightno = $row1['flightid'];
+                    $select = "SELECT * FROM train WHERE flightno = '$flightno'";
+                    $select = mysqli_query($conn, $select);
+                    
+                    while($row2 = mysqli_fetch_assoc($select))
+                    {
                 ?>
                 <td><?php echo $row1['id']; ?></td>
                   <td><?php echo $row2['name']; ?></td>
@@ -92,6 +99,7 @@ $result = mysqli_query($conn,$query);
                   <td><?php echo $row1['class']; ?></td>
                 </tr>
                 <?php    
+                    }
                   }
                 
                 ?>
